@@ -1,0 +1,199 @@
+{
+  "companies": [
+    {
+      "name": "Toptal",
+      "type": "company",
+      "website": "https://www.toptal.com",
+      "reason": "连接开发者与客户，需要截图功能"
+    },
+    {
+      "name": "Upwork",
+      "type": "company",
+      "website": "https://www.upwork.com",
+      "reason": "自由职业平台，项目预览需求"
+    },
+    {
+      "name": "Fiverr",
+      "type": "company",
+      "website": "https://www.fiverr.com",
+      "reason": "服务展示平台"
+    },
+    {
+      "name": "Webflow",
+      "type": "company",
+      "website": "https://webflow.com",
+      "reason": "网站建设平台"
+    },
+    {
+      "name": "Squarespace",
+      "type": "company",
+      "website": "https://www.squarespace.com",
+      "reason": "网站建设平台"
+    },
+    {
+      "name": "Wix",
+      "type": "company",
+      "website": "https://www.wix.com",
+      "reason": "网站建设平台"
+    },
+    {
+      "name": "Shopify",
+      "type": "company",
+      "website": "https://www.shopify.com",
+      "reason": "电商平台，店铺预览"
+    },
+    {
+      "name": "WordPress.com",
+      "type": "company",
+      "website": "https://wordpress.com",
+      "reason": "内容管理平台"
+    }
+  ],
+  "developers": [],
+  "agencies": [
+    {
+      "name": "HubSpot",
+      "type": "agency",
+      "website": "https://www.hubspot.com",
+      "reason": "营销平台，内容管理"
+    },
+    {
+      "name": "Mailchimp",
+      "type": "agency",
+      "website": "https://mailchimp.com",
+      "reason": "邮件营销，预览功能"
+    },
+    {
+      "name": "Hootsuite",
+      "type": "agency",
+      "website": "https://hootsuite.com",
+      "reason": "社交媒体管理"
+    },
+    {
+      "name": "Buffer",
+      "type": "agency",
+      "website": "https://buffer.com",
+      "reason": "社交媒体管理"
+    },
+    {
+      "name": "Sprout Social",
+      "type": "agency",
+      "website": "https://sproutsocial.com",
+      "reason": "社交媒体分析"
+    }
+  ],
+  "startups": [
+    {
+      "name": "Vercel",
+      "type": "startup",
+      "website": "https://vercel.com",
+      "reason": "前端部署平台"
+    },
+    {
+      "name": "Netlify",
+      "type": "startup",
+      "website": "https://www.netlify.com",
+      "reason": "前端部署平台"
+    },
+    {
+      "name": "Supabase",
+      "type": "startup",
+      "website": "https://supabase.com",
+      "reason": "开源Firebase替代品"
+    },
+    {
+      "name": "PlanetScale",
+      "type": "startup",
+      "website": "https://planetscale.com",
+      "reason": "数据库平台"
+    },
+    {
+      "name": "Stripe",
+      "type": "startup",
+      "website": "https://stripe.com",
+      "reason": "支付平台，已使用类似技术"
+    }
+  ],
+  "saas": [
+    {
+      "name": "Notion",
+      "type": "saas",
+      "website": "https://www.notion.so",
+      "reason": "生产力工具，网页嵌入"
+    },
+    {
+      "name": "Slack",
+      "type": "saas",
+      "website": "https://slack.com",
+      "reason": "团队协作，链接预览"
+    },
+    {
+      "name": "Zapier",
+      "type": "saas",
+      "website": "https://zapier.com",
+      "reason": "自动化平台"
+    },
+    {
+      "name": "Airtable",
+      "type": "saas",
+      "website": "https://airtable.com",
+      "reason": "数据库平台"
+    },
+    {
+      "name": "Monday.com",
+      "type": "saas",
+      "website": "https://monday.com",
+      "reason": "项目管理平台"
+    },
+    {
+      "name": "Asana",
+      "type": "saas",
+      "website": "https://asana.com",
+      "reason": "项目管理平台"
+    },
+    {
+      "name": "Trello",
+      "type": "saas",
+      "website": "https://trello.com",
+      "reason": "项目管理平台"
+    },
+    {
+      "name": "Figma",
+      "type": "saas",
+      "website": "https://www.figma.com",
+      "reason": "设计工具，协作平台"
+    }
+  ],
+  "devtools": [
+    {
+      "name": "GitHub",
+      "type": "devtools",
+      "website": "https://github.com",
+      "reason": "代码托管，项目预览"
+    },
+    {
+      "name": "GitLab",
+      "type": "devtools",
+      "website": "https://gitlab.com",
+      "reason": "代码托管，CI/CD"
+    },
+    {
+      "name": "Bitbucket",
+      "type": "devtools",
+      "website": "https://bitbucket.org",
+      "reason": "代码托管"
+    },
+    {
+      "name": "Heroku",
+      "type": "devtools",
+      "website": "https://heroku.com",
+      "reason": "云平台"
+    },
+    {
+      "name": "DigitalOcean",
+      "type": "devtools",
+      "website": "https://www.digitalocean.com",
+      "reason": "云服务提供商"
+    }
+  ]
+}
