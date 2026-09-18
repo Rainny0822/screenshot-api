@@ -1,0 +1,23 @@
+{
+  "name": "screenshot-api",
+  "version": "1.0.0",
+  "description": "URL Screenshot API Service - Free tier with affordable paid plans",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["screenshot", "api", "puppeteer", "web-scraping"],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^18.0.0",
+    "express": "^5.2.1",
+    "helmet": "^8.3.0",
+    "puppeteer": "^25.11.0",
+    "stripe": "^22.6.2"
+  }
+}
