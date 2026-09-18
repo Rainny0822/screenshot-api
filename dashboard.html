@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Screenshot API - 推广Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 2rem;
+        }
+        
+        .dashboard {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        
+        .header h1 {
+            color: #667eea;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .header p {
+            color: #666;
+            font-size: 1rem;
+        }
+        
+        .goals-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+        }
+        
+        .goals-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .goal-card {
+            background: rgba(255,255,255,0.1);
+            padding: 1rem;
+            border-radius: 5px;
+            text-align: center;
+        }
+        
+        .goal-card h3 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .goal-card p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        .progress-bar {
+            background: rgba(255,255,255,0.2);
+            height: 10px;
+            border-radius: 5px;
+            margin-top: 0.5rem;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            background: #4ade80;
+            height: 100%;
+            border-radius: 5px;
+            transition: width 0.3s ease;
+        }
+        
+        .section {
+            margin-bottom: 2rem;
+        }
+        
+        .section h2 {
+            color: #333;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .task-list {
+            list-style: none;
+        }
+        
+        .task-item {
+            background: #f8f9fa;
+            padding: 1rem;
+            margin-bottom: 0.5rem;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .task-item.completed {
+            background: #e8f5e9;
+        }
+        
+        .task-item input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+        }
+        
+        .task-item label {
+            flex: 1;
+            cursor: pointer;
+        }
+        
+        .task-item.completed label {
+            text-decoration: line-through;
+            color: #666;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+        }
+        
+        .stat-card {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 5px;
+            text-align: center;
+        }
+        
+        .stat-card h3 {
+            color: #667eea;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-card p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .actions {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .action-button {
+            background: #667eea;
+            color: white;
+            padding: 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.3s ease;
+        }
+        
+        .action-button:hover {
+            background: #764ba2;
+        }
+        
+        .action-button.secondary {
+            background: #6c757d;
+        }
+        
+        .action-button.success {
+            background: #28a745;
+        }
+        
+        .timeline {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 5px;
+        }
+        
+        .timeline-item {
+            padding: 0.5rem 0;
+            border-left: 3px solid #667eea;
+            padding-left: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .timeline-item h4 {
+            color: #333;
+            margin-bottom: 0.25rem;
+        }
+        
+        .timeline-item p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .revenue-calculator {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 5px;
+        }
+        
+        .calculator-input {
+            width: 100%;
+            padding: 0.5rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        
+        .calculator-result {
+            background: #e8f5e9;
+            padding: 1rem;
+            border-radius: 5px;
+            text-align: center;
+        }
+        
+        .calculator-result h3 {
+            color: #28a745;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard">
+        <div class="header">
+            <h1>📸 Screenshot API 推广Dashboard</h1>
+            <p>跟踪推广进度、收入目标和自动化任务</p>
+        </div>
+        
+        <div class="goals-section">
+            <h2>🎯 收入目标</h2>
+            <div class="goals-grid">
+                <div class="goal-card">
+                    <h3>$100</h3>
+                    <p>月收入目标</p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 0%"></div>
+                    </div>
+                    <p id="revenueProgress">0% 完成</p>
+                </div>
+                <div class="goal-card">
+                    <h3>20</h3>
+                    <p>付费用户目标</p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 0%"></div>
+                    </div>
+                    <p id="userProgress">0% 完成</p>
+                </div>
+                <div class="goal-card">
+                    <h3>100</h3>
+                    <p>试用用户目标</p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 0%"></div>
+                    </div>
+                    <p id="trialProgress">0% 完成</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>📊 实时统计</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3 id="currentRevenue">$0</h3>
+                    <p>当前月收入</p>
+                </div>
+                <div class="stat-card">
+                    <h3 id="paidUsers">0</h3>
+                    <p>付费用户</p>
+                </div>
+                <div class="stat-card">
+                    <h3 id="trialUsers">0</h3>
+                    <p>试用用户</p>
+                </div>
+                <div class="stat-card">
+                    <h3 id="conversionRate">0%</h3>
+                    <p>转化率</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>✅ 推广任务清单</h2>
+            <ul class="task-list">
+                <li class="task-item">
+                    <input type="checkbox" id="task1" onchange="updateProgress()">
+                    <label for="task1">部署到Render平台</label>
+                </li>
+                <li class="task-item">
+                    <input type="checkbox" id="task2" onchange="updateProgress()">
+                    <label for="task2">配置Stripe支付</label>
+                </li>
+                <li class="task-item">
+                    <input type="checkbox" id="task3" onchange="updateProgress()">
+                    <label for="task3">发布到Reddit (r/webdev)</label>
+                </li>
+                <li class="task-item">
+                    <input type="checkbox" id="task4" onchange="updateProgress()">
+                    <label for="task4">发布到Product Hunt</label>
+                </li>
+                <li class="task-item">
+                    <input type="checkbox" id="task5" onchange="updateProgress()">
+                    <label for="task5">发布Dev.to技术文章</label>
+                </li>
+                <li class="task-item">
+                    <input type="checkbox" id="task6" onchange="updateProgress()">
+                    <label for="task6">发送10封Cold Emails</label>
+                </li>
+                <li class="task-item">
+                    <input type="checkbox" id="task7" onchange="updateProgress()">
+                    <label for="task7">Twitter推广 (每日推文)</label>
+                </li>
+                <li class="task-item">
+                    <input type="checkbox" id="task8" onchange="updateProgress()">
+                    <label for="task8">Hacker News Show HN发布</label>
+                </li>
+            </ul>
+        </div>
+        
+        <div class="section">
+            <h2>📅 推广时间线</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h4>第1周：基础建设</h4>
+                    <p>部署服务、配置支付、准备推广材料</p>
+                </div>
+                <div class="timeline-item">
+                    <h4>第2周：内容发布</h4>
+                    <p>Reddit发布、技术文章、Twitter推广</p>
+                </div>
+                <div class="timeline-item">
+                    <h4>第3周：产品发布</h4>
+                    <p>Product Hunt发布、Hacker News Show HN</p>
+                </div>
+                <div class="timeline-item">
+                    <h4>第4周：客户开发</h4>
+                    <p>Cold Email推广、跟进潜在客户</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>💰 收入计算器</h2>
+            <div class="revenue-calculator">
+                <label>付费用户数量:</label>
+                <input type="number" class="calculator-input" id="paidUsersInput" value="20" onchange="calculateRevenue()">
+                <label>月费价格 ($):</label>
+                <input type="number" class="calculator-input" id="priceInput" value="5" onchange="calculateRevenue()">
+                <div class="calculator-result">
+                    <h3 id="calculatedRevenue">$100</h3>
+                    <p>预计月收入</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>🚀 快速操作</h2>
+            <div class="actions">
+                <button class="action-button" onclick="window.open('https://github.com/Rainny0822/screenshot-api', '_blank')">
+                    GitHub仓库
+                </button>
+                <button class="action-button" onclick="window.open('https://dashboard.render.com/new', '_blank')">
+                    部署到Render
+                </button>
+                <button class="action-button secondary" onclick="window.open('https://stripe.com', '_blank')">
+                    配置Stripe
+                </button>
+                <button class="action-button success" onclick="window.open('https://www.producthunt.com/posts/new', '_blank')">
+                    Product Hunt发布
+                </button>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>📝 推广进度</h2>
+            <div class="task-list">
+                <div class="task-item">
+                    <input type="checkbox" id="progress1" onchange="updateOverallProgress()">
+                    <label for="progress1">✅ 代码完成并推送到GitHub</label>
+                </div>
+                <div class="task-item">
+                    <input type="checkbox" id="progress2" onchange="updateOverallProgress()">
+                    <label for="progress2">⏳ 部署到云端平台</label>
+                </div>
+                <div class="task-item">
+                    <input type="checkbox" id="progress3" onchange="updateOverallProgress()">
+                    <label for="progress3">⏳ 配置支付系统</label>
+                </div>
+                <div class="task-item">
+                    <input type="checkbox" id="progress4" onchange="updateOverallProgress()">
+                    <label for="progress4">⏳ 开始推广活动</label>
+                </div>
+                <div class="task-item">
+                    <input type="checkbox" id="progress5" onchange="updateOverallProgress()">
+                    <label for="progress5">⏳ 获得首个付费用户</label>
+                </div>
+                <div class="task-item">
+                    <input type="checkbox" id="progress6" onchange="updateOverallProgress()">
+                    <label for="progress6">⏳ 达到$100月收入目标</label>
+                </div>
+            </div>
+            <div class="progress-bar" style="margin-top: 1rem;">
+                <div class="progress-fill" id="overallProgress" style="width: 16%"></div>
+            </div>
+            <p id="overallProgressText">16% 完成</p>
+        </div>
+    </div>
+    
+    <script>
+        // 收入计算
+        function calculateRevenue() {
+            const users = parseInt(document.getElementById('paidUsersInput').value) || 0;
+            const price = parseInt(document.getElementById('priceInput').value) || 0;
+            const revenue = users * price;
+            document.getElementById('calculatedRevenue').textContent = '$' + revenue;
+            
+            // 更新目标进度
+            const targetRevenue = 100;
+            const progress = Math.min((revenue / targetRevenue) * 100, 100);
+            document.querySelector('.goals-section .progress-fill').style.width = progress + '%';
+            document.getElementById('revenueProgress').textContent = progress.toFixed(0) + '% 完成';
+        }
+        
+        // 更新任务进度
+        function updateProgress() {
+            const tasks = document.querySelectorAll('.task-list input[type="checkbox"]');
+            let completed = 0;
+            tasks.forEach(task => {
+                if (task.checked) {
+                    completed++;
+                    task.closest('.task-item').classList.add('completed');
+                } else {
+                    task.closest('.task-item').classList.remove('completed');
+                }
+            });
+            
+            const progress = (completed / tasks.length) * 100;
+            console.log(`任务完成进度: ${progress.toFixed(0)}%`);
+        }
+        
+        // 更新整体进度
+        function updateOverallProgress() {
+            const progressItems = document.querySelectorAll('#progress1, #progress2, #progress3, #progress4, #progress5, #progress6');
+            let completed = 0;
+            progressItems.forEach(item => {
+                if (item.checked) {
+                    completed++;
+                    item.closest('.task-item').classList.add('completed');
+                } else {
+                    item.closest('.task-item').classList.remove('completed');
+                }
+            });
+            
+            const progress = (completed / progressItems.length) * 100;
+            document.getElementById('overallProgress').style.width = progress + '%';
+            document.getElementById('overallProgressText').textContent = progress.toFixed(0) + '% 完成';
+        }
+        
+        // 初始化
+        calculateRevenue();
+        updateProgress();
+        
+        // 模拟实时数据（在实际应用中，这些应该从API获取）
+        function simulateRealTimeData() {
+            // 这里可以添加实际的数据获取逻辑
+            console.log('实时数据更新已启用');
+        }
+        
+        setInterval(simulateRealTimeData, 30000); // 每30秒更新一次
+    </script>
+</body>
+</html>
