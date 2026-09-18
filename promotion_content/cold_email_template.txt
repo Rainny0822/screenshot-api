@@ -1,0 +1,35 @@
+Subject: Fast Screenshot API Service - Boost Your Development Efficiency
+
+Hi [Name],
+
+I noticed you're working on [project/company] and might need screenshot functionality.
+
+I've developed a Screenshot API service that could save you development time:
+
+**Features:**
+- Fast screenshots (2-3 seconds)
+- Free tier: 10 requests/day
+- Pro plan: $5/month (1000 requests)
+- Simple REST API integration
+- Customizable resolutions
+
+**API Example:**
+```bash
+POST /screenshot
+{
+  "url": "https://example.com",
+  "apiKey": "your_key",
+  "width": 1280,
+  "height": 720
+}
+```
+
+This could eliminate the need to build screenshot functionality from scratch.
+
+**GitHub:** https://github.com/Rainny0822/screenshot-api
+
+Feel free to try the free tier. I'd love your feedback!
+
+Best regards,
+[Your Name]
+Screenshot API Developer

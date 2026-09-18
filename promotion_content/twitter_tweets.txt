@@ -1,0 +1,27 @@
+🚀 Just launched Screenshot API! Capture web pages in seconds.
+
+Free tier: 10/day | Pro: $5/month (1000 requests)
+
+🔗 https://github.com/Rainny0822/screenshot-api
+
+#ScreenshotAPI #WebDev #SaaS
+
+---
+
+Need screenshots for your project? Check out my new Screenshot API!
+
+⚡ Fast & Simple
+💰 Free tier available
+🎯 Perfect for developers
+
+https://github.com/Rainny0822/screenshot-api
+
+#API #DevTools
+
+---
+
+Built a URL screenshot API with Node.js + Puppeteer. Free tier available, Pro plan $5/month for 1000 screenshots. Perfect for web dev projects! 🎉
+
+https://github.com/Rainny0822/screenshot-api
+
+#SideProject #SaaS #WebDev
